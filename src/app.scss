@@ -1,0 +1,7 @@
+@import '/src/styles/mixins';
+@import '/src/styles/var';
+
+#app-container {
+  @include flex(column, stretch, center);
+  height: 100vh;
+}

@@ -1,0 +1,14 @@
+
+@import '/src/styles/var';
+
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  color: $blue;
+  font-size: 1rem;
+  font-weight: $semibold;
+  text-transform: uppercase;
+}

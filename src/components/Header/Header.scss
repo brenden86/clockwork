@@ -1,0 +1,13 @@
+@import '/src/styles/var';
+@import '/src/styles/mixins';
+
+.header-main {
+  @include flex(row, center, center);
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: $header-height;
+  background: white;
+  padding: 1rem;
+  box-shadow: $box-shadow-big;
+}
