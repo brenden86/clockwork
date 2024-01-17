@@ -1,13 +1,13 @@
 import React from 'react'
-import './maincontent.scss';
-import CurrentTaskContainer from '../CurrentTaskContainer/CurrentTaskContainer';
-import RecentTasksContainer from '../RecentTasksContainer/RecentTasksContainer';
+import './MainContent.scss';
+import CurrentTask from '../CurrentTask/CurrentTask';
+import RecentTasksTable from '../RecentTasksTable/RecentTasksTable';
 
 export default function MainContent() {
   return (
     <main className='main-content-container'>
-      <CurrentTaskContainer/>
-      <RecentTasksContainer/>
+      <CurrentTask/>
+      <RecentTasksTable/>
     </main>
   )
 }

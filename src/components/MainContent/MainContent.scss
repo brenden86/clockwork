@@ -1,7 +1,12 @@
 @import '/src/styles/var';
+@import '/src/styles/mixins';
 
 .main-content-container {
   padding: $content-padding;
   padding-top: calc($content-padding + $header-height); // to clear header
   width: 100%;
-} 
+}
+
+.task-container {
+  @include flex(column, center, center);
+}

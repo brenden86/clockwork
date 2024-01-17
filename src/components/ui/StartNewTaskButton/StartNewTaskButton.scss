@@ -1,0 +1,15 @@
+
+@import '/src/styles/var';
+@import '/src/styles/mixins';
+
+.start-new-task-button {
+  @include flex(row, center, center);
+  gap: .5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 1rem;
+  margin: 2rem 1rem;
+  color: $grey-dark-1;
+  border: 2px dashed $grey-dark-1;
+  border-radius: 10px;
+}

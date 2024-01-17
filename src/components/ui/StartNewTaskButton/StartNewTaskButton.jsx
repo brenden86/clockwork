@@ -3,6 +3,9 @@ import './StartNewTaskButton.scss';
 
 export default function StartNewTaskButton() {
   return (
-    <div>StartNewTaskButton</div>
+    <button className='start-new-task-button'>
+      <i className="bi-plus-circle"></i>
+      start new task
+    </button>
   )
 }

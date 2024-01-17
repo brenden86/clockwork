@@ -1,0 +1,79 @@
+@import '/src/styles/var';
+@import '/src/styles/mixins';
+
+
+.task-table {
+  width: 100%;
+  text-align: left;
+  font-size: .8rem;
+  border-spacing: 0;
+  padding: $table-padding;
+
+  th, td {
+    white-space: nowrap;
+  }
+
+  thead {
+    th {
+      font-size: .75rem;
+      color: $grey-dark-1;
+      font-weight: $regular;
+      padding-bottom: .5rem;
+      vertical-align: middle;
+
+      i {
+        margin-right: .2rem;
+      }
+
+      // space between headings
+      &:not(:last-child) {
+        padding-right: .5rem;
+      }
+    }
+
+  }
+
+  tbody {
+    position: relative;
+
+    tr {
+
+      // row divider
+      &:not(:first-child) {
+        td {
+          border-top: 1px solid $grey-dark-1;
+        }
+      }
+
+    }
+
+    td {
+
+      // task name takes up most space
+      &:first-child {
+        width: 60%;
+      }
+
+      // align icon towards end
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+
+  // white table background
+  tbody::before {
+    content: '';
+    position: absolute;
+    top: -$table-padding-vertical;
+    left: -$table-padding-horizontal;
+    padding: $table-padding;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: $border-radius-main;
+    background: white;
+    box-shadow: $box-shadow;
+  }
+
+}

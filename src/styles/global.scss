@@ -16,4 +16,31 @@ html, body {
   background: $grey-light-1;
 }
 
+body {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -100;
+}
+
+button {
+  text-transform: uppercase;
+  font-weight: $semibold;
+  border: none;
+  background: none;
+  color: $blue;
+  font-size: 1rem;
+  padding: .5rem;
+  border-radius: 4px;
+
+  &:hover {
+    opacity: 0.75;
+    cursor: pointer;
+  }
+}
+
+i {
+  font-size: inherit;
+}
+
 
