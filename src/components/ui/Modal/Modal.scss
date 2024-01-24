@@ -1,0 +1,49 @@
+@import '/src/styles/mixins';
+@import '/src/styles/var';
+
+.modal {
+  border: 0;
+  background: white;
+  box-shadow: $box-shadow-big;
+  border-radius: $border-radius-big;
+  width: 90%;
+  max-width: 500px;
+  
+  .modal-content {
+    @include flex(column, stretch, space-between);
+    gap: 2rem;
+  }
+
+  .modal-icon {
+    @include flex(row, center, center);
+    width: 100%;
+    line-height: 0;
+    margin-top: 1rem;
+
+    i {
+      color: $blue;
+      font-size: 4rem;
+    }
+  }
+
+  .modal-text {
+    margin: 0 2rem;
+    text-align: center;
+  }
+
+  span {
+    display: inline;
+    color: $blue;
+    font-weight: $semibold;
+  }
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.25);
+  }
+}
+
+.modal-buttons {
+  width: 100%;
+  @include flex(row, space-between, center);
+
+}

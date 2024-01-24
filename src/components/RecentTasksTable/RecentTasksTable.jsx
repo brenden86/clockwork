@@ -5,7 +5,7 @@ import './RecentTasksTable.scss';
 export default function RecentTasksTable() {
 
   return (
-    <section className='task-container'>
+    <section className='content-wrapper'>
 
       <table className='task-table'>
 

@@ -8,6 +8,7 @@
 * {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
+  color: $font-color;
 }
 
 html, body {
@@ -33,6 +34,10 @@ button {
   padding: .5rem;
   border-radius: 4px;
 
+  &.cancel {
+    color: $grey-dark-1;
+  }
+
   &:hover {
     opacity: 0.75;
     cursor: pointer;
@@ -41,6 +46,17 @@ button {
 
 i {
   font-size: inherit;
+  color: inherit;
 }
+
+input[type="text"] {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid $grey-dark-1;
+  outline: 0;
+  font-size: inherit;
+}
+
+
 
 

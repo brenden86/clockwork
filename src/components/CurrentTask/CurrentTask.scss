@@ -1,2 +1,52 @@
 @import '/src/styles/mixins';
+@import '/src/styles/var';
+
+.current-task {
+  margin: 2rem 0;
+
+  .paused {
+    color: $grey-dark-1;
+  }
+
+}
+
+.current-task-heading {
+  @include flex(row, space-between, center);
+  padding: $content-padding;
+}
+
+.task-heading-detail {
+  font-weight: $semibold;
+  i {
+    margin-right: .25rem;
+  }
+
+  span {
+    margin-left: .25rem;
+    color: inherit;
+    font-weight: $regular;
+    font-size: .75rem;
+  }
+
+}
+
+.task-bar {
+  @include flex(row, space-between, center);
+  padding: .75rem $content-padding-horizontal;
+  background: white;
+  border-radius: $border-radius-main;
+  box-shadow: $box-shadow;
+}
+
+.task-name {
+  font-weight: $semibold;
+  padding: .5rem .5rem;
+}
+
+.task-actions {
+  @include flex(row, center, center);
+  gap: 0.5rem;
+}
+
+
 

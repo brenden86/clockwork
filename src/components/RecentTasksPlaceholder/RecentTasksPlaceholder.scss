@@ -1,0 +1,21 @@
+@import '/src/styles/mixins';
+@import '/src/styles/var';
+
+.recent-tasks-placeholder-container {
+  @include flex(column, flex-start, stretch);
+  width: 100%;
+  h1 {
+    padding-left: $content-padding-horizontal;
+    padding-bottom: .25rem;
+  }
+
+  .recent-tasks-placeholder {
+    text-align: center;
+    font-size: 1rem;
+    padding: 3rem 0;
+    text-transform: uppercase;
+    color: $grey-dark-1;
+    border: 2px dashed $grey-dark-1;
+    border-radius: $border-radius-big;
+  }
+}

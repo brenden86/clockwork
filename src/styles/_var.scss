@@ -1,8 +1,11 @@
 
 // Colors
 $red: #EE6767;
+$red-hover: #EE676726;
 $green: #00BE5B;
+$green-hover: #00BE5B26;
 $blue: #2793F7;
+$blue-hover: #2793F726;
 $grey-light-1: #F1F1F1;
 $grey: #DBDBDB;
 $grey-dark-1: #ABABAB;
@@ -18,9 +21,10 @@ $light: 300;
 $header-height: 5rem;
 $content-padding: 1rem;
 $border-radius-main: 4px;
-$table-padding-vertical: .25rem;
-$table-padding-horizontal: .5rem;
-$table-padding: $table-padding-vertical $table-padding-horizontal;
+$border-radius-big: 10px;
+$content-padding-vertical: .25rem;
+$content-padding-horizontal: .5rem;
+$content-padding: $content-padding-vertical $content-padding-horizontal;
 
 
 // other reusable styles

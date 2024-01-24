@@ -1,0 +1,56 @@
+@import '/src/styles/var';
+@import '/src/styles/mixins';
+
+.icon-button {
+  color: $blue;
+  line-height: 0;
+  border-radius: 50%;
+  padding: .6rem;
+
+  i {
+    display: block;
+  }
+
+  &:hover {
+    background: $blue-hover;
+    opacity: 1;
+  }
+
+  &.start {
+    color: $green;
+    i {
+      transform: rotate(90deg) scale(1);
+    }
+    &:hover {
+      background: $green-hover;
+    }
+  }
+
+  &.stop {
+    color: $red;
+    i {
+      transform: scale(.8);
+    }
+    &:hover {
+      background: $red-hover;
+    }
+  }
+
+  &.pause {
+    color: $blue;
+    i {
+      transform: scale(1.5);
+    }
+    &:hover {
+      background: $blue-hover;
+    }
+  }
+
+  &[disabled] {
+    color: $grey-dark-1;
+    &:hover {
+      background: transparent;
+      cursor: inherit;
+    }
+  }
+}

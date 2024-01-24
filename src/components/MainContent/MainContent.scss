@@ -2,11 +2,13 @@
 @import '/src/styles/mixins';
 
 .main-content-container {
+  @include flex(column, flex-start, center);
   padding: $content-padding;
-  padding-top: calc($content-padding + $header-height); // to clear header
+  padding-top: calc($content-padding-horizontal + $header-height); // to clear header
   width: 100%;
 }
 
-.task-container {
-  @include flex(column, center, center);
+.content-wrapper {
+  @include flex(column, flex-start, stretch);
+  width: 100%;
 }
