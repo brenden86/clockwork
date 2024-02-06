@@ -2,11 +2,12 @@ import React from 'react'
 import './IconButton.scss';
 
 export default function IconButton(props) {
-  const { type, callback = null } = props;
+  const { type, onClick = null, disabled } = props;
   return (
     <button
       className={`icon-button ${type}`}
-      onClick={callback}
+      onClick={onClick}
+      disabled={disabled}
 
     >
 

@@ -1,9 +1,10 @@
 @import '/src/styles/mixins';
 @import '/src/styles/var';
+@import '/src/styles/animations';
 
 .current-task {
   margin: 2rem 0;
-
+  
   .paused {
     color: $grey-dark-1;
   }

@@ -3,10 +3,10 @@ import './Modal.scss';
 
 export default function Modal(props) {
 
-  const { open } = props;
+  const { modalRef } = props;
 
   return (
-    <dialog className='modal' open={open}>
+    <dialog className='modal' ref={modalRef}>
       <div className="modal-content">
         <div className="modal-icon">
           <i className="bi-exclamation-circle"></i>
