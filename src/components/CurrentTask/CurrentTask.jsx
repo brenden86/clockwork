@@ -1,45 +1,64 @@
-import React, { useState } from 'react';
-import Task from '../../Task';
+import React, { useState, useEffect, useRef } from 'react';
+import Task from './Task';
+import { TimeUtils } from '../../utils/dateTimeUtils';
 import './CurrentTask.scss';
 import Heading from '../ui/Heading/Heading';
-import ElapsedTime from '../ElapsedTime/ElapsedTime';
 import IconButton from '../ui/IconButton/IconButton';
 
 export default function CurrentTask(props) {
 
   const {
-    pauseTask,
-    unpauseTask,
-    isPaused,
     currentTask,
     setCurrentTask,
+    currentTaskStatus,
+    setCurrentTaskStatus,
     tasks,
-    setTasks
+    setTasks,
+    stopTask
   } = props;
 
   const [newTaskName, setNewTaskName] = useState('');
-  
-  function handleChange(e) {
-    setNewTaskName(e.target.value);
-  }
 
-  function handleKeyPress(e) {
-    if(e.key === 'Enter') {
-      startTask(newTaskName)
+  const startButton = useRef();
+
+  let elapsedTimer;
+
+  // elapsed timer
+  useEffect(() => {
+    if(currentTaskStatus.status === 'active') {
+      let prevElapsed = currentTask.elapsedTime;
+      let taskStart = Date.now();
+      let taskStop;
+ 
+      setCurrentTask(prev => ({...prev, lastTaskStart: taskStart}));
+
+      elapsedTimer = setInterval(() => {
+        taskStop = Date.now()
+        setCurrentTask(prev => ({...prev, lastTaskStop: taskStop, elapsedTime: prevElapsed + (taskStop - taskStart)}))
+      }, 1000)
     }
+    
+    // stop timer when task is stopped
+    return () => {clearInterval(elapsedTimer)}
+  }, [currentTaskStatus])
+
+
+  
+  const handleChange = e => setNewTaskName(e.target.value.trim());
+
+  // enable starting task with enter key
+  function handleKeyPress(e) {
+    if(!startButton.current.disabled && e.key === 'Enter') startTask(newTaskName);
   }
 
   function startTask(name) {
-    let newTask = new Task(name)
-    setCurrentTask(newTask);
+    setCurrentTask(new Task(name));
+    setCurrentTaskStatus({status: 'active'});
   }
+    
+  const pauseTask = () => setCurrentTaskStatus({status: 'paused'});
+  const resumeTask = () => setCurrentTaskStatus({status: 'active'});
 
-  function stopTask() {
-    // move current task to tasks table
-    setTasks([...tasks, currentTask]);
-    setCurrentTask('');
-    unpauseTask();
-  }
 
   return (
     <section className='content-wrapper current-task'>
@@ -47,7 +66,13 @@ export default function CurrentTask(props) {
       <div className="current-task-heading">
         <Heading level={1} text="Current Task"/>
         <div className="current-task-details">
-          <ElapsedTime isPaused={isPaused}/>
+          {(currentTask != 'pending') &&
+            <div className={'task-heading-detail ' + ((currentTaskStatus.status === 'paused') ? 'paused' : '')}>
+              <i className="bi-stopwatch"></i>
+              {TimeUtils.formatElapsed(currentTask.elapsedTime)}
+              {(currentTaskStatus.status === 'paused') &&<span>(paused)</span>}
+            </div>
+          }
         </div>
       </div>
 
@@ -71,6 +96,7 @@ export default function CurrentTask(props) {
           </button>
 
           <button
+            ref={startButton}
             disabled={(!newTaskName ? true : false)}
             onClick={() => startTask(newTaskName)}
           >start</button>
@@ -86,9 +112,9 @@ export default function CurrentTask(props) {
             {currentTask.name}
           </div>
 
-          <div className={'task-actions ' + (isPaused ? 'paused' : '')}>
-            <IconButton type="start" onClick={unpauseTask} disabled={(isPaused ? false : true)}/>
-            <IconButton type="pause" onClick={pauseTask} disabled={(isPaused ? true : false)}/>
+          <div className={'task-actions ' + ((currentTaskStatus.status === 'paused') ? 'paused' : '')}>
+            <IconButton type="start" onClick={resumeTask} disabled={((currentTaskStatus.status === 'paused') ? false : true)}/>
+            <IconButton type="pause" onClick={pauseTask} disabled={((currentTaskStatus.status === 'paused') ? true : false)}/>
             <IconButton type="stop" onClick={stopTask}/>
           </div>
 

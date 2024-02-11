@@ -1,30 +1,42 @@
 import { useState, useRef } from 'react';
+import { TimeUtils, DateUtils } from '../../utils/dateTimeUtils';
 import Heading from '../ui/Heading/Heading';
 import Modal from '../ui/Modal/Modal';
 import './RecentTasksTable.scss';
 
 export default function RecentTasksTable(props) {
 
-  const { tasks, setTasks, currentTask, setCurrentTask } = props;
+  const {
+    tasks,
+    setTasks,
+    currentTask,
+    setCurrentTask,
+    currentTaskStatus,
+    setCurrentTaskStatus,
+    stopTask
+  } = props;
+
   const [nextTask, setNextTask] = useState();
+
   const switchTaskRef = useRef();
 
+  function removeTask(task) {
+    let removeTaskIndex = tasks.findIndex(item => item.id == task.id);
+    setTasks(tasks => [...tasks.slice(0,removeTaskIndex), ...tasks.slice(removeTaskIndex+1, tasks.length)])
+  }
+
   function switchTask(task, confirmed = false) {
-    // if no current task OR confirmed by modal, switch task
+    // if no current task OR task switch is confirmed by modal, switch
     if(!currentTask || confirmed) {
-      let oldTask = currentTask;
-      setCurrentTask(tasks.find(item => item.id == task.id))
-      let removeTaskIndex = tasks.findIndex(item => item.id == task.id);
-      if(oldTask) {
-        setTasks([oldTask, ...tasks.slice(0,removeTaskIndex), ...tasks.slice(removeTaskIndex+1, tasks.length)]);
-      } else {
-        setTasks([...tasks.slice(0,removeTaskIndex), ...tasks.slice(removeTaskIndex+1, tasks.length)]);
-      }
+      if(currentTask && currentTask != 'pending') stopTask();
+      setCurrentTask(task)
+      setCurrentTaskStatus(prev => ({...prev, status: 'active'}));
+      removeTask(task); // remove current task from table, will be returned when task stopped
     } else {
+      // if a current task is running, confirm switch with modal
       setNextTask(task);
       switchTaskRef.current.showModal();
     }
-    
   }
 
   function modalSwitchTask() {
@@ -58,8 +70,8 @@ export default function RecentTasksTable(props) {
           {tasks.map(task => 
             <tr key={task.id}>
               <td>{task.name}</td>
-              <td>12/31</td>
-              <td>0h 31m</td>
+              <td>{DateUtils.formatMonthDate(task.startDate)}</td>
+              <td>{TimeUtils.formatElapsed(task.elapsedTime)}</td>
               <td>
                 <button className="icon-button" onClick={() => switchTask(task)}>
                   <i className="bi-clock-history"></i>
