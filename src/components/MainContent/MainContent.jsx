@@ -25,6 +25,8 @@ export default function MainContent() {
   return (
     <main className='main-content-container'>
 
+      <div className="current-task-container">
+
       {currentTask &&<CurrentTask
         currentTask={currentTask}
         setCurrentTask={setCurrentTask}
@@ -36,6 +38,8 @@ export default function MainContent() {
       />}
 
       {!currentTask &&<StartNewTaskButton onClick={() => setCurrentTask('pending')}/>}
+      
+      </div>
 
       {tasks.length > 0 &&<RecentTasksTable
         tasks={tasks}

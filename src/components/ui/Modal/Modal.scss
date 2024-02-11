@@ -8,6 +8,7 @@
   border-radius: $border-radius-big;
   width: 90%;
   max-width: 500px;
+  animation: fadeInModal 200ms forwards ease-out;
   
   .modal-content {
     @include flex(column, stretch, space-between);

@@ -2,8 +2,21 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
+    top: 10px;
   } to {
     opacity: 1;
+    top: 0;
+  }
+  
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    margin-top: calc(25% + 10px);
+  } to {
+    opacity: 1;
+    margin-top: 25%;
   }
   
 }
