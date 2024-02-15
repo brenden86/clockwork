@@ -13,8 +13,12 @@ export default function MainContent() {
   const [currentTaskStatus, setCurrentTaskStatus] = useLocalStorage('task_status', { status: 'stopped'}); // stopped, active, or paused
   const [tasks, setTasks] = useLocalStorage('tasks', []);
 
-  
+  useEffect(() => {
 
+    if(currentTaskStatus.status === 'active') {
+      setCurrentTaskStatus({status: 'paused'});
+    }
+  }, [])
 
   function stopTask() {
     setTasks([...tasks, currentTask]);
