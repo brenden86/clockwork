@@ -5,6 +5,17 @@
   border: 1px dashed orange;
 }
 
+:root {
+  font-size: 16 px;
+}
+
+// larger font size on desktop
+@media (min-width: $breakpoint-desktop) {
+  * {
+    font-size: 1.125rem; //18px
+  }
+}
+
 * {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;

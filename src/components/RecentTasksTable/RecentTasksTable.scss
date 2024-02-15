@@ -49,6 +49,8 @@
 
     td {
 
+      padding: $content-padding-vertical;
+
       // task name takes up most space
       &:first-child {
         width: 60%;
