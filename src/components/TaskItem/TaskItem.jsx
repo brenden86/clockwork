@@ -1,22 +1,19 @@
 import React from 'react';
 import './TaskItem.scss';
+import { TimeUtils, DateUtils } from '../../utils/dateTimeUtils';
 
-export default function TaskItem() {
+export default function TaskItem({ task, switchTask }) {
+
   return (
-    <div className="task-item">
-
-      <span className="task-name">Task 1</span>
-
-      <div className="task-details right-content-wrapper">
-
-        <span className="start-date">Jan 10</span>
-        <span className="time-elapsed">0h 03m</span>
-        <button className="icon-button" onClick={() => alert('hi')}>
+    <tr>
+      <td>{task.name}</td>
+      <td>{DateUtils.formatMonthDate(task.startDate)}</td>
+      <td>{TimeUtils.formatElapsed(task.elapsedTime)}</td>
+      <td>
+        <button className="icon-button" onClick={() => switchTask(task)}>
           <i className="bi-clock-history"></i>
         </button>
-        
-      </div>
-      
-    </div>
+      </td>
+    </tr>
   )
 }

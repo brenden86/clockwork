@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
-import { TimeUtils, DateUtils } from '../../utils/dateTimeUtils';
 import Heading from '../ui/Heading/Heading';
 import Modal from '../ui/Modal/Modal';
+import TaskItem from '../TaskItem/TaskItem';
 import './RecentTasksTable.scss';
 
 export default function RecentTasksTable(props) {
@@ -68,16 +68,7 @@ export default function RecentTasksTable(props) {
         <tbody>
 
           {tasks.map(task => 
-            <tr key={task.id}>
-              <td>{task.name}</td>
-              <td>{DateUtils.formatMonthDate(task.startDate)}</td>
-              <td>{TimeUtils.formatElapsed(task.elapsedTime)}</td>
-              <td>
-                <button className="icon-button" onClick={() => switchTask(task)}>
-                  <i className="bi-clock-history"></i>
-                </button>
-              </td>
-            </tr>
+            <TaskItem key={task.id} task={task} switchTask={switchTask}/>
           )}
 
         </tbody>
