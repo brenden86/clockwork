@@ -22,7 +22,7 @@ export const TimeUtils = {
   formatElapsed: function(timeInMs) {
     let { hr, min, sec } = this.parseTime(timeInMs);
     if(hr > 0) return `${hr}h ${min}m`;
-    return `${min}m ${sec}s`;
+    return `${hr}h ${min}m`;
   }
 
 }
