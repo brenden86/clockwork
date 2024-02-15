@@ -6,6 +6,7 @@
   padding: $content-padding;
   padding-top: calc($content-padding-horizontal + $header-height); // to clear header
   width: 100%;
+  max-width: 50rem;
 }
 
 .content-wrapper {
