@@ -10,4 +10,9 @@
   background: white;
   padding: 1rem;
   box-shadow: $box-shadow-big;
+
+  // only logo in header
+  .logo-container {
+    height: 80%;
+  }
 }
