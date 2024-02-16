@@ -54,4 +54,11 @@
       cursor: inherit;
     }
   }
+
+  &.setting {
+    color: $grey-dark-1;
+    &:hover {
+      background: none;
+    }
+  }
 }

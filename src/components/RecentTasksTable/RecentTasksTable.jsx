@@ -68,7 +68,14 @@ export default function RecentTasksTable(props) {
         <tbody>
 
           {tasks.map(task => 
-            <TaskItem key={task.id} task={task} switchTask={switchTask}/>
+            <TaskItem
+              key={task.id}
+              task={task}
+              switchTask={switchTask}
+              tasks={tasks}
+              setTasks={setTasks}
+              removeTask={removeTask}
+            />
           )}
 
         </tbody>

@@ -58,6 +58,7 @@ button {
     color: $grey-dark-1;
     &:hover {
       background: transparent;
+      opacity: inherit;
       cursor: inherit;
     }
   }

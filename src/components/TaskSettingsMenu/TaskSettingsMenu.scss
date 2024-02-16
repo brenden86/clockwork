@@ -1,0 +1,15 @@
+@import '/src/styles/var';
+@import '/src/styles/mixins';
+@import '/src/styles/animations';
+
+.task-settings-container {
+  @include flex(column, center, flex-start);
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  background: $grey-light-2;
+  border-radius: $border-radius-main;
+  box-shadow: $box-shadow;
+  padding: .25rem;
+  animation: fadeInSettings 100ms forwards;
+}
