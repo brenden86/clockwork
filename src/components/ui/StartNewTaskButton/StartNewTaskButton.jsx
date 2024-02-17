@@ -7,8 +7,7 @@ export default function StartNewTaskButton(props) {
 
   return (
     <button className='start-new-task-button' onClick={onClick}>
-      <i className="bi-plus-circle"></i>
-      start new task
+      <i className="bi-plus-circle"> START NEW TASK</i>
     </button>
   )
 }

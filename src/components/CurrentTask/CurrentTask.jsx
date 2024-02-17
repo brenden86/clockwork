@@ -68,9 +68,10 @@ export default function CurrentTask(props) {
         <div className="current-task-details">
           {(currentTask != 'pending') &&
             <div className={'task-heading-detail ' + ((currentTaskStatus.status === 'paused') ? 'paused' : '')}>
-              <i className="bi-stopwatch"></i>
-              {TimeUtils.formatElapsed(currentTask.elapsedTime)}
-              {(currentTaskStatus.status === 'paused') &&<span>(paused)</span>}
+              <i className="bi-stopwatch">
+                &nbsp;{TimeUtils.formatElapsed(currentTask.elapsedTime)}
+                {(currentTaskStatus.status === 'paused') &&<span>(paused)</span>}
+              </i>
             </div>
           }
         </div>
@@ -80,7 +81,9 @@ export default function CurrentTask(props) {
       <div className="task-bar">
 
         <div className="task-name">
+          <label htmlFor="task-name-input" className="sr-only">Task name</label>
           <input
+            id="task-name-input"
             type='text'
             placeholder='enter task name'
             onChange={handleChange}
@@ -113,9 +116,23 @@ export default function CurrentTask(props) {
           </div>
 
           <div className={'task-actions ' + ((currentTaskStatus.status === 'paused') ? 'paused' : '')}>
-            <IconButton type="start" onClick={resumeTask} disabled={((currentTaskStatus.status === 'paused') ? false : true)}/>
-            <IconButton type="pause" onClick={pauseTask} disabled={((currentTaskStatus.status === 'paused') ? true : false)}/>
-            <IconButton type="stop" onClick={stopTask}/>
+            <IconButton
+              type="start"
+              onClick={resumeTask}
+              disabled={((currentTaskStatus.status === 'paused') ? false : true)}
+              ariaLabel="Start Task"
+            />
+            <IconButton
+              type="pause"
+              onClick={pauseTask}
+              disabled={((currentTaskStatus.status === 'paused') ? true : false)}
+              ariaLabel="Pause Task"
+            />
+            <IconButton
+              type="stop"
+              onClick={stopTask}
+              ariaLabel="Stop Task"
+            />
           </div>
 
         </div>

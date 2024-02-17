@@ -9,6 +9,17 @@
   font-size: 16 px;
 }
 
+// hides visually but still accessible to screen readers
+.sr-only {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+
 // larger font size on desktop
 @media (min-width: $breakpoint-desktop) {
   * {
