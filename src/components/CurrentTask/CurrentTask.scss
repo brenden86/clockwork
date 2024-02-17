@@ -44,11 +44,17 @@
   box-shadow: $box-shadow;
   position: relative;
   animation: fadeIn 100ms forwards;
+
+  input {
+    width: 100%;
+    max-width: 20rem;
+  }
 }
 
 .task-name {
   font-weight: $semibold;
   padding: .5rem .5rem;
+  width: 100%;
 }
 
 .task-actions {
