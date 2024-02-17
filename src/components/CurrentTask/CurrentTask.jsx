@@ -121,13 +121,13 @@ export default function CurrentTask(props) {
               onClick={resumeTask}
               disabled={((currentTaskStatus.status === 'paused') ? false : true)}
               ariaLabel="Start Task"
-            />
+              />
             <IconButton
               type="pause"
               onClick={pauseTask}
               disabled={((currentTaskStatus.status === 'paused') ? true : false)}
               ariaLabel="Pause Task"
-            />
+              />
             <IconButton
               type="stop"
               onClick={stopTask}

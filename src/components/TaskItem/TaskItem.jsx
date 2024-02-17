@@ -25,11 +25,11 @@ export default function TaskItem(props) {
       <td>{TimeUtils.formatElapsed(task.elapsedTime)}</td>
       <td className='task-buttons'>
 
-        <button className="icon-button" onClick={() => switchTask(task)}>
+        <button className="icon-button" onClick={() => switchTask(task)} title="Switch Task" aria-label="Switch Task">
           <i className="bi-clock-history"></i>
         </button>
 
-        <button className="icon-button setting" onClick={() => toggleShowSettings()} ref={settingsButtonRef}>
+        <button className="icon-button setting" onClick={() => toggleShowSettings()} ref={settingsButtonRef} title="Task Settings" aria-label="Task Settings">
           <i className="bi-three-dots-vertical"></i>
         </button>
 

@@ -9,6 +9,7 @@ export default function IconButton(props) {
       onClick={onClick}
       disabled={disabled}
       aria-label={ariaLabel}
+      title={ariaLabel}
     >
 
     {type === 'start' &&<i className='bi-triangle-fill'></i>}
