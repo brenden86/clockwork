@@ -30,6 +30,7 @@ export default function TaskSettingsMenu(props) {
     }
 
     document.addEventListener('click', handleClickOutside);
+
     return () => document.removeEventListener('click', handleClickOutside);
 
   }, []);
@@ -59,13 +60,11 @@ export default function TaskSettingsMenu(props) {
     <div className='task-settings-container' ref={taskSettingsRef}>
       
       <button onClick={handleRename}>
-        <i className="bi-pencil-square"> </i>
-        Rename task
+        <i className="bi-pencil-square"> Rename task</i>
       </button>
 
       <button className='cancel' onClick={() => {removeTask(task)}}>
-        <i className="bi-trash"> </i>
-        Delete Task
+        <i className="bi-trash"> Delete Task</i>
       </button>
 
       <Modal modalRef={renameTaskRef}>
