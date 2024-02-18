@@ -16,6 +16,12 @@
 
 }
 
+.timer-icon {
+  color: $blue;
+  animation: shake 5s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
 .current-task-heading {
   @include flex(row, space-between, center);
   padding: $content-padding;
@@ -25,6 +31,13 @@
   font-weight: $semibold;
   i {
     margin-right: .25rem;
+  }
+
+  &.paused {
+    i {
+      color: $grey-dark-1;
+      animation: none;
+    }
   }
 
   span {

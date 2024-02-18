@@ -31,3 +31,20 @@
   }
   
 }
+
+@keyframes scale {
+  from {
+    scale: 1;
+  } to {
+    scale: 1.5;
+  }
+}
+
+@keyframes shake {
+  0% {rotate: 0deg;}
+  3% {rotate: -10deg;}
+  6% {rotate: 10deg;}
+  9% {rotate: -10deg;}
+  12% {rotate: 10deg;}
+  15% {rotate: 0deg;}
+}

@@ -64,17 +64,19 @@ export default function CurrentTask(props) {
     <section className='content-wrapper current-task'>
 
       <div className="current-task-heading">
+
         <Heading level={1} text="Current Task"/>
+
         <div className="current-task-details">
           {(currentTask != 'pending') &&
             <div className={'task-heading-detail ' + ((currentTaskStatus.status === 'paused') ? 'paused' : '')}>
-              <i className="bi-stopwatch">
-                &nbsp;{TimeUtils.formatElapsed(currentTask.elapsedTime)}
-                {(currentTaskStatus.status === 'paused') &&<span>(paused)</span>}
-              </i>
+              <i className="bi-stopwatch timer-icon"></i>
+              {TimeUtils.formatElapsed(currentTask.elapsedTime)}
+              {(currentTaskStatus.status === 'paused') &&<span>(paused)</span>}
             </div>
           }
         </div>
+
       </div>
 
       {(currentTask === 'pending') &&
