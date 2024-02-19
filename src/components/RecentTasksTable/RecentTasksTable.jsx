@@ -1,8 +1,10 @@
 import { useState, useRef } from 'react';
+
+import './RecentTasksTable.scss';
+
 import Heading from '../ui/Heading/Heading';
 import Modal from '../ui/Modal/Modal';
 import TaskItem from '../TaskItem/TaskItem';
-import './RecentTasksTable.scss';
 
 export default function RecentTasksTable(props) {
 
@@ -11,7 +13,6 @@ export default function RecentTasksTable(props) {
     setTasks,
     currentTask,
     setCurrentTask,
-    currentTaskStatus,
     setCurrentTaskStatus,
     stopTask
   } = props;
@@ -21,6 +22,7 @@ export default function RecentTasksTable(props) {
   const switchTaskRef = useRef();
 
   function removeTask(task) {
+    // remove task from tasks array
     let removeTaskIndex = tasks.findIndex(item => item.id == task.id);
     setTasks(tasks => [...tasks.slice(0,removeTaskIndex), ...tasks.slice(removeTaskIndex+1, tasks.length)])
   }
@@ -28,10 +30,11 @@ export default function RecentTasksTable(props) {
   function switchTask(task, confirmed = false) {
     // if no current task OR task switch is confirmed by modal, switch
     if(!currentTask || confirmed) {
+      // stop current task first if exists
       if(currentTask && currentTask != 'pending') stopTask();
       setCurrentTask(task)
       setCurrentTaskStatus(prev => ({...prev, status: 'active'}));
-      removeTask(task); // remove current task from table, will be returned when task stopped
+      removeTask(task); // remove new current task from table, will be returned to table when task stopped
     } else {
       // if a current task is running, confirm switch with modal
       setNextTask(task);
@@ -55,12 +58,10 @@ export default function RecentTasksTable(props) {
               <Heading level={1} text="Recent Tasks"/>
             </th>
             <th>
-              <i className="bi-calendar" role='presentation'></i>
-              started
+              <i className="bi-calendar"> started</i>
             </th>
             <th colSpan={2}>
-              <i className="bi-stopwatch" role='presentation'></i>
-              time elapsed
+              <i className="bi-stopwatch"> time elapsed</i>
             </th>
           </tr>
         </thead>

@@ -2,7 +2,7 @@ import React from 'react'
 import './Heading.scss';
 
 export default function Heading(props) {
-  let { level, text } = props;
+  let { level = 1, text } = props;
 
   // use heading 1 by default if level entered is invalid
   if(typeof(level) != 'number') {

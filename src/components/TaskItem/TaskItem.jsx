@@ -15,7 +15,9 @@ export default function TaskItem(props) {
     removeTask
   } = props;
 
+  // toggle whether task settings menu is visible
   const [showSettings, toggleShowSettings] = useToggle(false);
+
   const settingsButtonRef = useRef();
 
   return (

@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Task from './Task';
-import { TimeUtils } from '../../utils/dateTimeUtils';
+
 import './CurrentTask.scss';
+
+import { TimeUtils } from '../../utils/dateTimeUtils';
+import Task from './Task';
 import Heading from '../ui/Heading/Heading';
 import IconButton from '../ui/IconButton/IconButton';
 
@@ -25,25 +27,31 @@ export default function CurrentTask(props) {
 
   // elapsed timer
   useEffect(() => {
+
+    // while current task is being tracked (active status), update elapsed time
     if(currentTaskStatus.status === 'active') {
+      // declare variables for calculating new elapsed time
       let prevElapsed = currentTask.elapsedTime;
       let taskStart = Date.now();
       let taskStop;
  
+      // set the time the task was last started immediately
       setCurrentTask(prev => ({...prev, lastTaskStart: taskStart}));
 
+      // interval that updates elapsed time every second
       elapsedTimer = setInterval(() => {
-        taskStop = Date.now()
-        setCurrentTask(prev => ({...prev, lastTaskStop: taskStop, elapsedTime: prevElapsed + (taskStop - taskStart)}))
+        taskStop = Date.now();
+        setCurrentTask(prev => ({...prev, lastTaskStop: taskStop, elapsedTime: prevElapsed + (taskStop - taskStart)}));
       }, 1000)
     }
     
     // stop timer when task is stopped
     return () => {clearInterval(elapsedTimer)}
+
   }, [currentTaskStatus])
 
 
-  
+  // save new task name to state from input
   const handleChange = e => setNewTaskName(e.target.value.trim());
 
   // enable starting task with enter key
@@ -51,6 +59,7 @@ export default function CurrentTask(props) {
     if(!startButton.current.disabled && e.key === 'Enter') startTask(newTaskName);
   }
 
+  // create a new task and set as current task
   function startTask(name) {
     setCurrentTask(new Task(name));
     setCurrentTaskStatus({status: 'active'});
@@ -63,6 +72,7 @@ export default function CurrentTask(props) {
   return (
     <section className='content-wrapper current-task'>
 
+      {/* current task heading  */}
       <div className="current-task-heading">
 
         <Heading level={1} text="Current Task"/>
@@ -79,6 +89,7 @@ export default function CurrentTask(props) {
 
       </div>
 
+      {/* PENDING task bar */}
       {(currentTask === 'pending') &&
       <div className="task-bar">
 
@@ -91,7 +102,7 @@ export default function CurrentTask(props) {
             onChange={handleChange}
             onKeyUp={handleKeyPress}
             maxLength={50}
-          ></input>
+          />
         </div>
 
         <div className="task-actions">
@@ -105,11 +116,13 @@ export default function CurrentTask(props) {
             disabled={(!newTaskName ? true : false)}
             onClick={() => startTask(newTaskName)}
           >start</button>
+
         </div>
 
       </div>
       }
-        
+      
+      {/* ACTIVE task bar */}
       {(currentTask != 'pending') &&
         <div className="task-bar">
 
@@ -139,7 +152,6 @@ export default function CurrentTask(props) {
 
         </div>
       }
-
 
 
     </section>

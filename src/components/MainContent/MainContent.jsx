@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 import './MainContent.scss';
+
 import CurrentTask from '../CurrentTask/CurrentTask';
 import RecentTasksTable from '../RecentTasksTable/RecentTasksTable';
 import RecentTasksPlaceholder from '../RecentTasksPlaceholder/RecentTasksPlaceholder';
@@ -15,13 +16,17 @@ export default function MainContent() {
 
   useEffect(() => {
 
+    // if there is a current task, start it on paused status
     if(currentTaskStatus.status === 'active') {
       setCurrentTaskStatus({status: 'paused'});
     }
+
   }, [])
 
   function stopTask() {
+    // move current task back to tasks array
     setTasks([...tasks, currentTask]);
+    // stop timer and clear current task
     setCurrentTaskStatus(prev => ({...prev, status: 'stopped'}));
     setCurrentTask('');
   }
@@ -50,7 +55,6 @@ export default function MainContent() {
         setTasks={setTasks}
         currentTask={currentTask}
         setCurrentTask={setCurrentTask}
-        currentTaskStatus={currentTaskStatus}
         setCurrentTaskStatus={setCurrentTaskStatus}
         stopTask={stopTask}
       />}

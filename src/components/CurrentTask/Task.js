@@ -10,6 +10,7 @@ export default class Task {
   }
 
   getId() {
+    // get the latest id (largest) from tasks array, increment for next task
     let tasks = JSON.parse(localStorage.getItem('tasks'));
     // start with ID of 1 if no tasks exist
     if(tasks.length < 1) return 1
