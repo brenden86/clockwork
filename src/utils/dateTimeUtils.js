@@ -11,7 +11,7 @@ export const TimeUtils = {
   secToMs: seconds => seconds * 1000,
 
   parseTime: function(timeInMs) {
-    // return time parts as a time object
+    // return time parts as an object
     let hours = this.msToHr(timeInMs);
     let minutes = this.msToMin(timeInMs - this.hrToMs(hours));
     let seconds = this.msToSec(timeInMs - this.hrToMs(hours) - this.minToMs(minutes));
@@ -32,7 +32,9 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
 export const DateUtils = {
   formatMonthDate: function(timestamp) {
     let date = new Date(timestamp);
+    // get first three letters of month
     let monthName = monthNames[date.getMonth()].substring(0,3);
     return `${monthName} ${date.getDate()}`;
+    // Jan 01
   }
 }
