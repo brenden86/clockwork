@@ -1,8 +1,5 @@
-# React + Vite
+# ClockWork
+*Simple web-based timekeeping app*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+Front-end personal project created to practice skills developing web applications using the React framework. Users can create and track time spent on various tasks. Tasks can be paused, stopped, or switched to resume tracking a preivous task that has already been started. Task data is persisted client-side through local storage.
