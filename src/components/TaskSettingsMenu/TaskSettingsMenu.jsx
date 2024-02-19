@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import './TaskSettingsMenu.scss';
+
 import Modal from '../ui/Modal/Modal';
 
 export default function TaskSettingsMenu(props) {

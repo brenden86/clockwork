@@ -2,7 +2,7 @@ import React from 'react'
 import './IconButton.scss';
 
 export default function IconButton(props) {
-  const { type, onClick = null, disabled, ariaLabel } = props;
+  const { type, onClick = null, disabled, ariaLabel, buttonRef } = props;
   return (
     <button
       className={`icon-button ${type}`}
@@ -10,11 +10,10 @@ export default function IconButton(props) {
       disabled={disabled}
       aria-label={ariaLabel}
       title={ariaLabel}
+      ref={buttonRef}
     >
 
-    {type === 'start' &&<i className='bi-triangle-fill'></i>}
-    {type === 'pause' &&<i className='bi-pause-fill'></i>}
-    {type === 'stop' &&<i className='bi-square-fill'></i>}
+    {props.children}
 
     </button>
   )

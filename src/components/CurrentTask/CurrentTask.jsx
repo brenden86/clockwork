@@ -131,23 +131,33 @@ export default function CurrentTask(props) {
           </div>
 
           <div className={'task-actions ' + ((currentTaskStatus.status === 'paused') ? 'paused' : '')}>
+
             <IconButton
               type="start"
               onClick={resumeTask}
               disabled={((currentTaskStatus.status === 'paused') ? false : true)}
               ariaLabel="Start Task"
-              />
+            >
+              <i className='bi-triangle-fill'></i>
+            </IconButton>
+
             <IconButton
               type="pause"
               onClick={pauseTask}
               disabled={((currentTaskStatus.status === 'paused') ? true : false)}
               ariaLabel="Pause Task"
-              />
+            >
+              <i className='bi-pause-fill'></i>
+            </IconButton>
+
             <IconButton
               type="stop"
               onClick={stopTask}
               ariaLabel="Stop Task"
-            />
+            >
+              <i className='bi-square-fill'></i>
+            </IconButton>
+            
           </div>
 
         </div>
