@@ -5,6 +5,7 @@
   @include flex(column, flex-start, center);
   padding: $content-padding;
   padding-top: calc($content-padding-horizontal + $header-height); // to clear header
+  padding-bottom: 3rem; // create extra space between bottom of page and last element
   width: 100%;
   max-width: 50rem;
 }
