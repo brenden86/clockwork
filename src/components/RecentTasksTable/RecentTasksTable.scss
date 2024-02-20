@@ -2,7 +2,19 @@
 @import '/src/styles/mixins';
 
 
+.table-background {
+  position: absolute;
+  bottom: 0;
+  height: calc(100% - 2rem);
+  width: 100%;
+  z-index: -1;
+  border-radius: $border-radius-main;
+  background: white;
+  box-shadow: $box-shadow;
+}
+
 .task-table {
+  position: relative;
   width: 100%;
   text-align: left;
   font-size: .8rem;
@@ -61,21 +73,6 @@
         text-align: right;
       }
     }
-  }
-
-  // white table background
-  tbody::before {
-    content: '';
-    position: absolute;
-    top: -$content-padding-vertical;
-    left: -$content-padding-horizontal;
-    padding: $content-padding;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    border-radius: $border-radius-main;
-    background: white;
-    box-shadow: $box-shadow;
   }
 
 }

@@ -50,38 +50,35 @@ export default function RecentTasksTable(props) {
   return (
     <section className='content-wrapper'>
 
-      <table className='task-table'>
+        <div className="table-background"></div>
 
-        <thead>
-          <tr>
-            <th>
-              <Heading level={1} text="Recent Tasks"/>
-            </th>
-            <th>
-              <i className="bi-calendar"> started</i>
-            </th>
-            <th colSpan={2}>
-              <i className="bi-stopwatch"> time elapsed</i>
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-          {tasks.map(task => 
-            <TaskItem
-              key={task.id}
-              task={task}
-              switchTask={switchTask}
-              tasks={tasks}
-              setTasks={setTasks}
-              removeTask={removeTask}
-            />
-          )}
-
-        </tbody>
-
-      </table>
+        <table className='task-table'>
+          <thead>
+            <tr>
+              <th>
+                <Heading level={1} text="Recent Tasks"/>
+              </th>
+              <th>
+                <i className="bi-calendar"> started</i>
+              </th>
+              <th colSpan={2}>
+                <i className="bi-stopwatch"> time elapsed</i>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {tasks.map(task =>
+              <TaskItem
+                key={task.id}
+                task={task}
+                switchTask={switchTask}
+                tasks={tasks}
+                setTasks={setTasks}
+                removeTask={removeTask}
+              />
+            )}
+          </tbody>
+        </table>
 
       <Modal modalRef={switchTaskRef}>
         <p className="modal-text">
