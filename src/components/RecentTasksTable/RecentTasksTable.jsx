@@ -67,7 +67,11 @@ export default function RecentTasksTable(props) {
             </tr>
           </thead>
           <tbody>
-            {tasks.map(task =>
+            {
+            // sort by most recent on top
+            tasks
+            .sort((a, b) => b.lastTaskStart - a.lastTaskStart)
+            .map(task =>
               <TaskItem
                 key={task.id}
                 task={task}
