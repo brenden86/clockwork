@@ -30,12 +30,12 @@
   .modal-text {
     margin: 0 2rem;
     text-align: center;
-    white-space: wrap;
+    white-space: normal;
   }
   
   span {
     display: inline-block;
-    white-space: wrap;
+    white-space: normal;
     color: $blue;
     font-weight: $semibold;
   }
