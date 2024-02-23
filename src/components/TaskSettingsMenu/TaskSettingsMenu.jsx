@@ -87,6 +87,7 @@ export default function TaskSettingsMenu(props) {
           placeholder='New task name'
           onChange={handleNameChange}
           value={newTaskName}
+          maxLength={50}
         />
 
         <div className="modal-buttons">

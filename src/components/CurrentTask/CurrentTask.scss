@@ -68,6 +68,8 @@
   font-weight: $semibold;
   padding: .5rem .5rem;
   width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .task-actions {
